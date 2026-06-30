@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>蛋宝捉迷藏</title>
+    <link rel="stylesheet" href="./styles.css?v=20260611-role-art" />
+  </head>
+  <body>
+    <canvas id="gameCanvas" tabindex="0" aria-label="蛋宝捉迷藏游戏画面"></canvas>
+
+    <div id="menu" class="screen screen--active">
+      <div class="brand">
+        <span class="brand__mark">Q</span>
+        <div>
+          <h1>蛋宝捉迷藏</h1>
+          <p>键盘版 · 卡通追逐 · 5 分钟一局</p>
+        </div>
+      </div>
+      <div class="role-picker" role="group" aria-label="选择角色">
+        <button class="role-card role-card--active" data-role="hider">
+          <span class="role-avatar role-avatar--hider" aria-hidden="true">
+            <span class="role-avatar__mask"></span>
+            <span class="role-avatar__eye role-avatar__eye--left"></span>
+            <span class="role-avatar__eye role-avatar__eye--right"></span>
+            <span class="role-avatar__smile"></span>
+          </span>
+          <strong>做躲藏者</strong>
+          <small>变成小物件，撑到倒计时结束</small>
+        </button>
+        <button class="role-card" data-role="seeker">
+          <span class="role-avatar role-avatar--seeker" aria-hidden="true">
+            <span class="role-avatar__hat"></span>
+            <span class="role-avatar__badge"></span>
+            <span class="role-avatar__eye role-avatar__eye--left"></span>
+            <span class="role-avatar__eye role-avatar__eye--right"></span>
+            <span class="role-avatar__brow role-avatar__brow--left"></span>
+            <span class="role-avatar__brow role-avatar__brow--right"></span>
+            <span class="role-avatar__frown"></span>
+          </span>
+          <strong>做追捕者</strong>
+          <small>用火眼金睛找出所有伪装</small>
+        </button>
+      </div>
+      <div class="menu-actions">
+        <button id="startButton" class="primary-button">Enter 开始</button>
+        <span>W/S 或方向键选择</span>
+      </div>
+    </div>
+
+    <div id="hud" class="hud" hidden>
+      <div class="hud__chip hud__chip--time">
+        <span>倒计时</span>
+        <strong id="timerText">05:00</strong>
+      </div>
+      <div class="hud__chip">
+        <span id="roleText">躲藏者</span>
+        <strong id="objectiveText">躲起来</strong>
+      </div>
+      <div class="hud__chip">
+        <span>存活</span>
+        <strong id="aliveText">4/4</strong>
+      </div>
+      <div class="hud__hint" id="hintText"></div>
+    </div>
+
+    <div id="statusToast" class="toast" hidden></div>
+
+    <div id="endScreen" class="screen">
+      <div class="end-card">
+        <h2 id="resultTitle">胜利</h2>
+        <p id="resultText">你赢啦！</p>
+        <button id="restartButton" class="primary-button">Enter 再玩一局</button>
+      </div>
+    </div>
+
+    <script type="module" src="./src/game.js?v=20260611-unlimited-scan"></script>
+  </body>
+</html>
